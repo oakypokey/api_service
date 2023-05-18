@@ -14,7 +14,7 @@ scopes = [
 ]
 
 if(os.environ.get('ENV') == 'dev'):
-    URL_STUB = "https://localhost:8080"
+    URL_STUB = "http://localhost:8080"
 else:
     URL_STUB = "https://apiservice-growthcopilot.b4a.run"
 

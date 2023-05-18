@@ -13,6 +13,11 @@ scopes = [
     'app_mentions:read'
 ]
 
+if(os.environ.get('ENV') == 'dev'):
+    URL_STUB = "https://localhost:8080"
+else:
+    URL_STUB = "https://apiservice-growthcopilot.b4a.run"
+
 load_dotenv()
 
 SLACK_CLIENT = WebClient()
@@ -24,16 +29,12 @@ router = APIRouter(prefix="/slack",
 
 @router.get("/install")
 def pre_install():
-    if(os.environ.get('ENV') == 'dev'):
-        url = "https://localhost:8080/slack/oauth_redirect"
-    else:
-        url = "https://apiservice-growthcopilot.b4a.run/slack/oauth_redirect"
-
+    url = URL_STUB + '/slack/oauth_redirect'
     state = "12345"
     scope_string = '&amp;'.join(scopes)
     print(scope_string)
     return HTMLResponse('<html><a href="https://slack.com/oauth/v2/authorize?' \
-        f'scope={scope_string}&client_id={os.environ.get("SLACK_CLIENT_ID")}&state=12345&url={url}">' \
+        f'scope={scope_string}&client_id={os.environ.get("SLACK_CLIENT_ID")}&state={state}&redirect_uri={url}">' \
         'Add to Slack</a></html>')
 
 

@@ -2,7 +2,7 @@ fastapi
 pydantic
 uvicorn
 watchfiles
-oauth2-client
 python-dotenv
 slack_sdk
 slack_bolt
+oauthlib

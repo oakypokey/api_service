@@ -12,6 +12,7 @@ COPY . /api_service
 
 # Expose port
 EXPOSE 80
+EXPOSE 3000
 
 # start the server
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["python", "-m", "src"]

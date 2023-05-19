@@ -14,4 +14,4 @@ COPY . /api_service
 EXPOSE 8080
 
 # start the server
-CMD ["python", "-m", "src"]
+CMD ["uvicorn", "src.main:api", "--host", "0.0.0.0", "--port", "8080"]

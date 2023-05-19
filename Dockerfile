@@ -11,8 +11,7 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY . /api_service
 
 # Expose port
-EXPOSE 80
-EXPOSE 3000
+EXPOSE 8080
 
 # start the server
 CMD ["python", "-m", "src"]
